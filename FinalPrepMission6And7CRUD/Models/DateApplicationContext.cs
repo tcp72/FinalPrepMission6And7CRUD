@@ -30,7 +30,7 @@ namespace FinalPrepMission6And7CRUD.Models
         {
 
             //this is for Major table
-            mb.Entity<ApplicationResponse>().HasData(
+            mb.Entity<Major>().HasData(
                 new Major { MajorId = 1, MajorName = "Information Systems" },
                 new Major { MajorId = 2, MajorName = "Ancient Near Eastern Studies" },
                 new Major { MajorId = 3, MajorName = "Accounting" },
@@ -61,9 +61,8 @@ namespace FinalPrepMission6And7CRUD.Models
                     MajorId = 5,
                     CreeperStalker = false //not need for boolean
                 }
+
                 );
-
-
         }
     }
 }

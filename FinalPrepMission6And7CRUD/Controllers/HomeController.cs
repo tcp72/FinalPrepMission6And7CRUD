@@ -62,6 +62,24 @@ namespace FinalPrepMission6And7CRUD.Controllers
             return View(applications);
         }
 
+        public IActionResult Edit (int applicationid)
+        {
+
+            ViewBag.BlahMajors = DaContext.Majors.ToList(); //example he just did "Majors". This populates the list of majors
+
+            var application = DaContext.Responses.Single(x => x.ApplicationId == applicationid); 
+            //to populate the data in the form; get a single record that has the application id that passed
+            //in the URL; "Responses" is the dbset created in the context file
+
+            return View("DatingApplication", application);  //ViewBag.BlahMajors is automatically set and not need pass;
+            //pass the "application" single record that we want to edit and was passed in URL
+        }
+
+        public IActionResult Delete ()
+        {
+            return View();
+        }
+
         //public IActionResult DatingApplication()
         //{
 

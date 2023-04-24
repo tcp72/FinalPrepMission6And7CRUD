@@ -16,6 +16,8 @@
             <td>Phone</td>
             <td>Major</td>
             <td>Creeper/Stalker</td>
+            <td>Edit</td>
+            <td>Delete</td>
 
         </tr>
     </thead>
@@ -32,7 +34,10 @@
                     <td>@entry.Phone</td>
                     <td>@entry.Major.MajorName</td>
                     <td>@entry.CreeperStalker</td>
+
+                    <td asp-controller="Home" asp-action="Edit" asp-route-applicationid="@entry.ApplicationId">Edit</td>
+                    <td asp-controller="Home" asp-action="Delete">Delete</td>
                 </tr>
             }
-    </tbody>
+    </tbody>=
 </table>
