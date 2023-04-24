@@ -15,6 +15,8 @@ namespace FinalPrepMission6And7CRUD.Controllers
         //private dateapplicationContext instance named that that we can get and set
         //it's an instance of dbcontext class
         private DateApplicationContext DaContext { get; set; } //da for date application
+        
+        //would bring in a repository here and then set it in constructor right below
 
         //constructor
         public HomeController(DateApplicationContext someName)
@@ -41,11 +43,20 @@ namespace FinalPrepMission6And7CRUD.Controllers
         public IActionResult DatingApplication(ApplicationResponse ar)
             //create an instance of application response (from the model) and catch all of the info that's coming in
         {
-            DaContext.Add(ar); //this adds the data from ApplicationResponse to the context file
-            DaContext.SaveChanges(); //this actually saves the data to the context file (which then saves it to the db)
+            ViewBag.BlahMajors = DaContext.Majors.ToList(); //added this
 
-            return View("Confirmation", ar); //this is passing to the view for when we submit the form the model
-            //so we can use it in our confirmation message (see video 7 UsingTheModel)
+            if (ModelState.IsValid)
+            {
+                DaContext.Add(ar); //this adds the data from ApplicationResponse to the context file
+                DaContext.SaveChanges(); //this actually saves the data to the context file (which then saves it to the db)
+
+                return View("Confirmation", ar); //this is passing to the view for when we submit the form the model
+                                                 //so we can use it in our confirmation message (see video 7 UsingTheModel)
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult WaitList ()
@@ -78,10 +89,20 @@ namespace FinalPrepMission6And7CRUD.Controllers
         [HttpPost]
         public IActionResult Edit (ApplicationResponse blah)
         {
-            DaContext.Update(blah); //update changes based on info passed in
-            DaContext.SaveChanges(); //save those changes
+            ViewBag.BlahMajors = DaContext.Majors.ToList(); //added this; view bag is here regardless
 
-            return RedirectToAction("WaitList"); //send user to WaitList Action and load the data needed to make page display
+            if (ModelState.IsValid)
+            {
+                DaContext.Update(blah); //update changes based on info passed in
+                DaContext.SaveChanges(); //save those changes
+
+                return RedirectToAction("WaitList"); //send user to WaitList Action and load the data needed to make page display
+            }
+            else
+            {
+                return View("DatingApplication");
+            }
+
         }
 
         public IActionResult Delete ()

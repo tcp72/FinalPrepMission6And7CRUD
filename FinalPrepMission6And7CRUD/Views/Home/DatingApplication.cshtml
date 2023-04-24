@@ -28,13 +28,12 @@
         <input asp-for="Phone" /><br />
 
         <label asp-for="MajorId">Major</label>
-        <select asp-for="MajorId" />
+        <select asp-for="MajorId">
         <option value="">Select a Major</option>
         <!--This is of type "Major", in ViewBag the entry titled "Majors" (named in Dbcontext)-->
-        @foreach (Major m in ViewBag.Majors)
+        @foreach (Major m in ViewBag.BlahMajors)
         {
-            <option value="m.MajorId">@m.MajorName</option>
-
+            <option value="@m.MajorId">@m.MajorName</option>
         }
         <!--they see the Major Name and when they click on it, store MajorId-->
         </select>
