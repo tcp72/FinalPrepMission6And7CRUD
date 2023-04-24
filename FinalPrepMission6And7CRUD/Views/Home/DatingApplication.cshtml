@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Dating Application";
+}
+
+@model FinalPrepMission6And7CRUD.Models.ApplicationResponse
+
+<!--project name; Models folder; specific model we want to bring in
+    OR could have gone to _ViewImports and added at model ProjectName.Model
+    and then here just have at model [modelname]; just depends on if want several
+    models or just 1-->
+
+<h1>Fill out Dating Application</h1>
+
+<div>
+    <form method="post">
+        <!--THis is where say post-->
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName" /><br />
+        <!--this asp-for connects to that field in the model-->
+
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" /><br />
+
+        <label asp-for="Age">Age</label>
+        <input asp-for="Age" /><br />
+
+        <label asp-for="Phone">Phone</label>
+        <input asp-for="Phone" /><br />
+
+        <label asp-for="MajorId">Major</label>
+        <select asp-for="MajorId" />
+        <option value="">Select a Major</option>
+        <!--This is of type "Major", in ViewBag the entry titled "Majors" (named in Dbcontext)-->
+        @foreach (Major m in ViewBag.Majors)
+        {
+            <option value="m.MajorId">@m.MajorName</option>
+
+        }
+        <!--they see the Major Name and when they click on it, store MajorId-->
+        </select>
+
+        <br />
+
+        <label asp-for="CreeperStalker">Creeper/Stalker?</label>
+        <select asp-for="CreeperStalker">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select><br />
+
+        <button type="submit">Submit Application</button>
+
+    </form>
+
+</div>

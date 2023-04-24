@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Confirmation";
+}
+
+@model FinalPrepMission6And7CRUD.Models.ApplicationResponse
+
+
+@if (Model.CreeperStalker == true)
+{
+    <h2>My bad. I forgot I'm already in a relationships, but I have a friend who would be perfect for you!'</h2>
+}
+
+else
+{
+    <!--Note this only works because passed in the model above and also in the Home Controller to the Post-->
+    <h2>Application Received. Thank you, @Model.FirstName.</h2>
+    <h3>Although, you should be thanking me for considering going out with you.</h3>
+}

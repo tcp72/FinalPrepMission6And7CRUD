@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Wait List";
+}
+
+@model List<ApplicationResponse>
+<!--Above is saying to pass in a list from the 'ApplicationResponse' model. Many individuals; we reference this in the "tbody" loop below -->
+<!--Note we are pulling in a list from that model and it is interpreted as the "movies" object created in the HomeController-->
+
+<table class="table table-bordered table-striped">
+    <!--these classes are built into the bootstrap-->
+    <thead class="font-weight-bold">
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Age</td>
+            <td>Phone</td>
+            <td>Major</td>
+            <td>Creeper/Stalker</td>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        <!--capital M Model; viewmodel would be if we had stuff from several different models and pass that in
+            but we're going more basic here (see 6 min 15 sec in video 5 ListingData )'-->
+        @foreach (var entry in Model)
+            {
+                <tr>
+                    <td>@entry.FirstName</td>
+                    <td>@entry.LastName</td>
+                    <td>@entry.Age</td>
+                    <td>@entry.Phone</td>
+                    <td>@entry.Major.MajorName</td>
+                    <td>@entry.CreeperStalker</td>
+                </tr>
+            }
+    </tbody>
+</table>

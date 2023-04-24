@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Date Me";
+}
+
+<h1>Welcome</h1>
+
+<div>
+    <p>You could have the opportunity to date this awesomeness!</p>
+</div>
+
+<img src="~/img/pictest.jpg" height="200" />
+
+<br />
+
+<div>
+    <a asp-controller="Home" asp-action="DatingApplication">Fill Out Application</a>
+    <!--controller is Home because Home Controller and using the "Home" folder in Views
+        asp-action is the name of the action (which is default to the name of the 
+        page usually). Unless make a change in HomeController (see 4 min on video 3)
+        -->
+</div>
+
+<div>
+    <a asp-controller="Home" asp-action="Waitlist">View Wait List</a>
+</div>
