@@ -62,9 +62,9 @@ namespace FinalPrepMission6And7CRUD.Controllers
             return View(applications);
         }
 
+        [HttpGet]
         public IActionResult Edit (int applicationid)
         {
-
             ViewBag.BlahMajors = DaContext.Majors.ToList(); //example he just did "Majors". This populates the list of majors
 
             var application = DaContext.Responses.Single(x => x.ApplicationId == applicationid); 
@@ -73,6 +73,15 @@ namespace FinalPrepMission6And7CRUD.Controllers
 
             return View("DatingApplication", application);  //ViewBag.BlahMajors is automatically set and not need pass;
             //pass the "application" single record that we want to edit and was passed in URL
+        }
+
+        [HttpPost]
+        public IActionResult Edit (ApplicationResponse blah)
+        {
+            DaContext.Update(blah); //update changes based on info passed in
+            DaContext.SaveChanges(); //save those changes
+
+            return RedirectToAction("WaitList"); //send user to WaitList Action and load the data needed to make page display
         }
 
         public IActionResult Delete ()
